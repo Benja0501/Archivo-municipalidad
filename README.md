@@ -106,7 +106,7 @@ Laravel Sanctum	Para API
 Spatie Roles & Permissions	Control de acceso
 📦 Instalación (local)
 # Clonar el repositorio
-git clone https://github.com/tunombre/sistema-archivo-mdg.git
+git clone https://github.com/Benja0501/Archivo-municipalidad.git
 cd sistema-archivo-mdg
 
 # Instalar dependencias
