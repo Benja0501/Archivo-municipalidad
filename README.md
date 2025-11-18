@@ -220,7 +220,7 @@ Diseño adaptado a la identidad institucional.
 
 📸 Capturas de pantalla
 
-(Puedes agregarlas usando imágenes de tu repositorio)
+..
 
 📄 Licencia
 
