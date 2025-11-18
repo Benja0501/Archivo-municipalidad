@@ -1,59 +1,235 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+📁 Sistema de Archivo Municipal – Municipalidad Distrital de Guadalupe
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Gestión de tomos físicos, documentos digitalizados, series documentales y áreas productoras.
 
-## About Laravel
+Este sistema permite administrar el Archivo Municipal de la MDG, reemplazando la gestión manual realizada mediante archivos Excel y documentos físicos. Está construido con Laravel 12, MySQL, TailwindCSS y Sanctum para autenticación API.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+🚀 Funcionalidades principales
+🔐 Autenticación y seguridad
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Inicio de sesión para usuarios autorizados (sin registro público).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Roles: Super-admin, Administrador, Archivista, Consulta.
 
-## Learning Laravel
+Control de acceso por permisos Spatie.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+🗂️ Áreas del archivo
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Gestión de las áreas productoras: Secretaría General, RRHH, Gerencias, etc.
 
-## Laravel Sponsors
+Cada documento y tomo pertenece a un área.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+🧩 Series documentales
 
-### Premium Partners
+Clasificación archivística para agrupar tomos de la misma temática.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Series y subseries opcionales.
 
-## Contributing
+📚 Tomos físicos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Registro de tomos del archivo físico:
 
-## Code of Conduct
+Item (autogenerado)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Área
 
-## Security Vulnerabilities
+Año
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Número de tomo
 
-## License
+Folios totales (calculados automáticamente)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Rango de documentos: desde / hasta
+
+Ubicación física (andamio, fila)
+
+Estado (activo / inactivo)
+
+Lista de tomos con búsqueda por área, año, serie, etc.
+
+📄 Documentos digitalizados
+
+Registro de resoluciones, acuerdos, expedientes, etc.
+
+Campos:
+
+Área
+
+Número de documento
+
+Nombre / descripción
+
+Fecha
+
+Folio dentro del tomo
+
+Archivo PDF o imagen (opcional)
+
+Relación automática al tomo y actualización de:
+
+Cantidad de folios
+
+Documento inicial «desde»
+
+Documento final «hasta»
+
+🔎 Consulta rápida de documentos
+
+Búsqueda por:
+
+Número de documento
+
+Área
+
+Tomo
+
+Año
+
+Serie documental
+
+Descarga del PDF cuando exista.
+
+🖥️ Panel administrativo moderno
+
+Diseño con Tailwind y Blade.
+
+Interfaz especializada para archivistas.
+
+🛠️ Tecnologías utilizadas
+Componente	Versión
+Laravel	12.x
+PHP	8.2 o superior
+MySQL	8.x
+TailwindCSS	3.x
+Laravel Breeze	Para login
+Laravel Sanctum	Para API
+Spatie Roles & Permissions	Control de acceso
+📦 Instalación (local)
+# Clonar el repositorio
+git clone https://github.com/tunombre/sistema-archivo-mdg.git
+cd sistema-archivo-mdg
+
+# Instalar dependencias
+composer install
+npm install
+npm run build
+
+# Copiar archivo de entorno
+cp .env.example .env
+
+# Generar llave
+php artisan key:generate
+
+# Configurar base de datos en .env
+# luego:
+php artisan migrate --seed
+
+Crear usuario administrador
+
+El seed crea un usuario:
+
+Usuario: admin@archivo-muni.test
+Contraseña: password
+Rol: Super-admin
+
+
+Puedes cambiarlo desde el panel.
+
+🌐 Rutas principales
+Panel administrativo
+/admin
+
+Dashboard general
+/dashboard
+
+Gestión de usuarios
+/admin/users
+
+Gestión de áreas
+/admin/areas
+
+Series documentales
+/admin/series
+
+Tomos físicos
+/admin/tomos
+
+Documentos digitalizados
+/admin/documentos
+
+🔌 API básica (Laravel Sanctum)
+Obtener usuario autenticado
+GET /api/me
+Header: Authorization: Bearer {token}
+
+Cerrar sesión
+POST /api/logout
+
+📁 Estructura del proyecto
+app/
+ ├── Http/Controllers/Admin/...
+ ├── Models/
+ ├── Policies/
+database/
+ ├── migrations/
+ ├── seeders/
+resources/
+ ├── views/admin/...
+ ├── views/tomos/
+ ├── views/documentos/
+ ├── views/areas/
+ ├── views/series/
+ ├── views/auth/
+routes/
+ ├── web.php
+ ├── api.php
+
+☁️ Deploy en hosting/cPanel (paso a paso)
+1. Subir los archivos del proyecto
+
+Sube todo excepto /vendor.
+
+Sube dentro de una carpeta: sistema-archivo o similar.
+
+2. Instalar dependencias vía terminal de cPanel
+composer install --no-dev
+npm install && npm run build (opcional si tu hosting soporta node)
+
+3. Configurar .env
+
+Base de datos del hosting
+
+URL del dominio
+
+Credenciales de correo (si usarás notificaciones)
+
+4. Mover el contenido de /public a la raíz web (/public_html)
+
+O apuntar el dominio a /public.
+
+5. Migrar base de datos
+php artisan migrate --seed
+
+6. Configurar permisos
+chmod -R 775 storage bootstrap/cache
+
+🏛️ Créditos
+
+Desarrollado para el Archivo Municipal – Municipalidad Distrital de Guadalupe (MDG).
+Diseño adaptado a la identidad institucional.
+
+📸 Capturas de pantalla
+
+(Puedes agregarlas usando imágenes de tu repositorio)
+
+📄 Licencia
+
+Este software es propiedad de la Municipalidad Distrital de Guadalupe.
+Queda prohibida su distribución sin autorización institucional.
+
+Si quieres, puedo generarte también:
+
+✅ Logo para el repositorio
+✅ Banner “Sistema de Archivo MDG”
+✅ Wiki técnica del backend
+✅ Documentación completa del API
