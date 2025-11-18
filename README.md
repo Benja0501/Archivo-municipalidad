@@ -226,10 +226,3 @@ Diseño adaptado a la identidad institucional.
 
 Este software es propiedad de la Municipalidad Distrital de Guadalupe.
 Queda prohibida su distribución sin autorización institucional.
-
-Si quieres, puedo generarte también:
-
-✅ Logo para el repositorio
-✅ Banner “Sistema de Archivo MDG”
-✅ Wiki técnica del backend
-✅ Documentación completa del API
