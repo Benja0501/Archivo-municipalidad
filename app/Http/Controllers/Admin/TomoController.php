@@ -110,6 +110,7 @@ class TomoController extends Controller
             ->with('status', 'Tomo eliminado correctamente.');
     }
 
+    // Ver detalles de un tomo y sus documentos
     public function show(Tomo $tomo, Request $request)
     {
         $search = $request->input('search');
