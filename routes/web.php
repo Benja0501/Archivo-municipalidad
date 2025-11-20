@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DocumentSeriesController;
 use App\Http\Controllers\Admin\TomoController;
 use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\DocumentController;
+use App\Http\Controllers\Admin\DocumentFileController;
 
 
 Route::get('/', function () {
@@ -60,8 +61,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::resource('areas', AreaController::class)->names('areas');
 
             //Documento
-
             Route::resource('documents', DocumentController::class)->names('documents');
+
+
+            // Archivos de un documento (múltiples)
+            Route::delete('documents/{document}/files/{file}', [DocumentFileController::class, 'destroy'])
+                ->name('documents.files.destroy');
+
+            // (Opcional) Eliminar TODOS los archivos de un documento
+            Route::delete('documents/{document}/files', [DocumentFileController::class, 'destroyAll'])
+                ->name('documents.files.destroyAll');
         });
 });
 

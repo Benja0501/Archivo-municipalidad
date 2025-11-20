@@ -109,4 +109,22 @@ class TomoController extends Controller
         return redirect()->route('admin.tomos.index')
             ->with('status', 'Tomo eliminado correctamente.');
     }
+
+    public function show(Tomo $tomo, Request $request)
+    {
+        $search = $request->input('search');
+
+        // Carga de documentos del tomo con su serie
+        $documents = $tomo->documents()
+            ->with('series')
+            ->when($search, function ($q) use ($search) {
+                $q->where('number', 'like', "%{$search}%")
+                    ->orWhere('summary', 'like', "%{$search}%");
+            })
+            ->orderBy('folio_number')
+            ->paginate(25)
+            ->withQueryString();
+
+        return view('admin.tomos.show', compact('tomo', 'documents', 'search'));
+    }
 }
